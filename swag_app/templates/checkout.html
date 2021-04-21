@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="header">
+        <div class="row">
+            <h1 class="display-4">Contact Information</h1>
+        </div>
+    </div>
+    <div class="form_body">
+        <form action="#" method="POST">
+            {% csrf_token %}
+            <div class="col">
+                <div class="form-floating">
+                    <!-- REMOVE EITHER 'PLACEHOLDER' OR 'LABEL FOR' ACCORDING TO HOW BOOTSTRAP ALLOWS -->
+                    <input type="text" class="form-control" name="first_name" id="floatingFirstName" placeholder="First Name">
+                    <label for="floatingFirstName">First Name: </label>
+                </div>
+                <div class="form-floating">
+                    <!-- REMOVE EITHER 'PLACEHOLDER' OR 'LABEL FOR' ACCORDING TO HOW BOOTSTRAP ALLOWS -->
+                    <input type="text" class="form-control" name="last_name" id="floatingLastName" placeholder="Last Name">
+                    <label for="floatingLastName">First Name: </label>
+                </div>
+                <div class="form-floating">
+                    <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email">
+                    <label for="floatingEmail">Last Name: </label>
+                </div>
+                <div class="form-floating">
+                    <input type="tel" class="form-control" name="phone_num" id="floatingPhone" placeholder="Phone">
+                    <label for="floatingPhone">Phone: </label>
+                </div>
+            </div>
+            <div class="col">
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="address" id="floatingAddress" placeholder="Address">
+                    <label for="floatingAddress">Address: </label>
+                </div>
+                <div class="form-floating">
+                    <input type="text" class="form-control" name="city" id="floatingCity" placeholder="City">
+                    <label for="floatingCity">City: </label>
+                </div>
+                <div class="form-floating">
+                <!-- INPUT STATES HERE USING SELECT TAGS, THANKS ROY -->
+                </div>
+                <div class="form-floating">
+                    <input type="postal" class="form-control" name="postal" id="floatingPostal" placeholder="Zip code">
+                    <label for="floatingPostal">Zip Code: </label>
+                </div>
+                <div class="row">
+                    <h1 class="display-4">Payment Information</h1>
+                </div>
+                <div class="row">
+                    <!-- RESEARCH API FOR PAYPAL PAYMENT METHODS...THEY WE BE ADDED IN BELOW INSTEAD OF INPUT FIELD -->
+                    <div class="form-floating">
+                        <input type="number" class="form-control" name="creditCard" id="floatingCard" placeholder="Credit Card Number">
+                        <label for="floatingCard">Credit Card Number: </label>
+                    </div>
+                    <div class="form-floating">
+                        <input type="date" maxlength="4" class="form-contrl" name="expDate" id="floatingExpDate" placeholder="MM/YY">
+                        <label for="floatingExpDate">MM/YY</label> 
+                    </div>
+                    <div class="form-floating">
+                        <input type="number" maxlength="3" class="form-control" name="CVV" id="floatingCVV" placeholder="CVV">
+                        <label for="floatingCVV">CVV</label>
+                    </div>
+                </div>
+            </div>
+        </form>
+</body>
+</html>
