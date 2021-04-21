@@ -6,4 +6,5 @@ from . import views
 
 urlpatterns = [
     path('', views.index),
+    path('/dojoswag', views.swag_home)
 ]
