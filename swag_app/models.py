@@ -1,10 +1,10 @@
 from django.db import models
-from django.contrib.auth.models import user
+# from django.contrib.auth.models import product
 
 # Create your models here.
 # Abbey will handle models
 
-class Products(models.Model):
+class Product(models.Model):
     title = models.CharField(max_length=255)
     price = models.FloatField(default=0.00)
     description = models.TextField()
