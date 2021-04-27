@@ -18,7 +18,7 @@
     <div class="header">
         <div class="row">
             <div class="col">
-                <h1 class="display-4">Dojo Swag Merch</h1>
+                <h1 class="display-4 my-5 mx-5">Dojo Swag Merch</h1>
             </div>
             <div class="col">
                 <!-- Nice-to-have feature for later: add conditional statement to show full cart icon or empty cart icon depending on what user has selected -->
@@ -31,62 +31,17 @@
     </div>
     <div class="container">
         <div class="row">
-            <!-- Need to add the correct images and link to the individual product pages. Having trouble getting images to load -->
-            <!-- This should prob actually be a loop to display whatever is in the product class...need to figure out how to display in continuing rows of 3 from the loop -->
-            <div class="card-group mx-3">
-                <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="/static/images/coffee_break_black.png" alt="First item image">
-                    <div class="card-body">
-                        <h5 class="card-title">1st Card title</h5>
-                        <p class="card-text">First item description</p>
-                        <!-- Not sure if we want this text muted? bolded? larger? -->
-                        <p class="card-text text-muted">First item price</p>
+                {% for each_product in all_products %}
+                <div class="col">
+                    <div class="card-group mx-3 d-inline-flex">
+                        <img class="card-img-top" style="width: 15rem;" src="{{ each_product.thumbnail.url }}" alt="6th item image">
+                        <div class="card-body">
+                            <h5 class="card-title"><a href="/dojoswag/productpage/{{one_product.id}}" style="text-decoration: none;">{{each_product.title}}</a></h5>
+                            <p class="card-text text-muted">${{each_product.price}}</p>
+                        </div>
                     </div>
                 </div>
-                <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="/static/images/dojo_sensei_white.png" alt="2nd item image">
-                    <div class="card-body">
-                        <h5 class="card-title">2nd Card title</h5>
-                        <p class="card-text">2nd item description</p>
-                        <p class="card-text text-muted">2nd item price</p>
-                    </div>
-                </div>
-                <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="/static/images/dojo_unisex_xmas_hoodie.png" alt="3rd item image">
-                    <div class="card-body">
-                        <h5 class="card-title">3rd Card title</h5>
-                        <p class="card-text">3rd item description</p>
-                        <p class="card-text text-muted">3rd item price</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card-group mx-3">
-                <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="/static/images/dojo_womens_coffee_black.png" alt="4th item image">
-                    <div class="card-body">
-                        <h5 class="card-title">4th Card title</h5>
-                        <p class="card-text">4th item description</p>
-                        <p class="card-text text-muted">4th item price</p>
-                    </div>
-                </div>
-                <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="/static/images/dojo_womens_sensei_black.png" alt="5th item image">
-                    <div class="card-body">
-                        <h5 class="card-title">5th Card title</h5>
-                        <p class="card-text">5th item description</p>
-                        <p class="card-text text-muted">5th item price</p>
-                    </div>
-                </div>
-                <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="/static/images/dojo_womens_coffee_white.png" alt="6th item image">
-                    <div class="card-body">
-                        <h5 class="card-title">6th Card title</h5>
-                        <p class="card-text">6th item description</p>
-                        <p class="card-text text-muted">6th item price</p>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
         </div>
     </div>

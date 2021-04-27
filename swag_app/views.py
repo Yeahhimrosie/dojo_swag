@@ -6,8 +6,13 @@ from .models import *
 #Marj will handle views
 def swag_home(request):
     context = {
-        'product_images':Product.objects.all(), 
+        'all_products':Product.objects.all(), 
     }
 
     return render(request, 'main.html', context)
 
+def product_page(request, product_id):
+    context = {
+        'one_product': Product.objects.get(id=product_id),
+    }
+    return render(request, 'product.html', context)
