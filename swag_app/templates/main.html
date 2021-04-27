@@ -8,7 +8,11 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <!-- End Bootstrap -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css\style.css' %}">
+
     <title>Dojo Swag Merch</title>
+
 </head>
 <body>
     <div class="header">
@@ -31,7 +35,7 @@
             <!-- This should prob actually be a loop to display whatever is in the product class...need to figure out how to display in continuing rows of 3 from the loop -->
             <div class="card-group mx-3">
                 <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="dojo_swag\static\images\coffee_break_black.png" alt="First item image">
+                    <img class="card-img-top" src="/static/images/coffee_break_black.png" alt="First item image">
                     <div class="card-body">
                         <h5 class="card-title">1st Card title</h5>
                         <p class="card-text">First item description</p>
@@ -40,7 +44,7 @@
                     </div>
                 </div>
                 <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="..." alt="2nd item image">
+                    <img class="card-img-top" src="/static/images/dojo_sensei_white.png" alt="2nd item image">
                     <div class="card-body">
                         <h5 class="card-title">2nd Card title</h5>
                         <p class="card-text">2nd item description</p>
@@ -48,7 +52,7 @@
                     </div>
                 </div>
                 <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="..." alt="3rd item image">
+                    <img class="card-img-top" src="/static/images/dojo_unisex_xmas_hoodie.png" alt="3rd item image">
                     <div class="card-body">
                         <h5 class="card-title">3rd Card title</h5>
                         <p class="card-text">3rd item description</p>
@@ -60,7 +64,7 @@
         <div class="row">
             <div class="card-group mx-3">
                 <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="..." alt="4th item image">
+                    <img class="card-img-top" src="/static/images/dojo_womens_coffee_black.png" alt="4th item image">
                     <div class="card-body">
                         <h5 class="card-title">4th Card title</h5>
                         <p class="card-text">4th item description</p>
@@ -68,7 +72,7 @@
                     </div>
                 </div>
                 <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="..." alt="5th item image">
+                    <img class="card-img-top" src="/static/images/dojo_womens_sensei_black.png" alt="5th item image">
                     <div class="card-body">
                         <h5 class="card-title">5th Card title</h5>
                         <p class="card-text">5th item description</p>
@@ -76,7 +80,7 @@
                     </div>
                 </div>
                 <div class="card mx-3 my-3">
-                    <img class="card-img-top" src="..." alt="6th item image">
+                    <img class="card-img-top" src="/static/images/dojo_womens_coffee_white.png" alt="6th item image">
                     <div class="card-body">
                         <h5 class="card-title">6th Card title</h5>
                         <p class="card-text">6th item description</p>
@@ -86,7 +90,5 @@
             </div>
         </div>
     </div>
-
-
 </body>
 </html>
