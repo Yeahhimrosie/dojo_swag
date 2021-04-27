@@ -14,7 +14,7 @@
     <title>Dojo Swag Merch</title>
 
 </head>
-<body>
+<body style="overflow-x: hidden">
     <div class="header">
         <div class="row">
             <div class="col">
@@ -33,11 +33,11 @@
         <div class="row">
                 {% for each_product in all_products %}
                 <div class="col">
-                    <div class="card-group mx-3 d-inline-flex">
-                        <img class="card-img-top" style="width: 15rem;" src="{{ each_product.thumbnail.url }}" alt="6th item image">
-                        <div class="card-body">
+                    <div class="card-group mx-3 d-inline-flex mb-5">
+                        <img class="card-img-top mx-auto mt-3" style="width: 15rem;" src="{{ each_product.thumbnail.url }}" alt="6th item image">
+                        <div class="card-body text-center">
                             <h5 class="card-title"><a href="/dojoswag/productpage/{{one_product.id}}" style="text-decoration: none;">{{each_product.title}}</a></h5>
-                            <p class="card-text text-muted">${{each_product.price}}</p>
+                            <p class="card-text text-muted">${{each_product.price|floatformat:2}}</p>
                         </div>
                     </div>
                 </div>
