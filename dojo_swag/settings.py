@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
 
+
 import os
 from dotenv import load_dotenv
 load_dotenv()
@@ -22,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = (os.getenv('SECRET_KEY'))
+SECRET_KEY = str(os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -37,7 +38,7 @@ EMAIL_HOST_USER = 'apikey'
 EMAIL_HOST_PASSWORD = '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'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-DEFAULT_EMAIL_FROM = 'Interiorstore <noreply@codewithstein.com>'
+DEFAULT_EMAIL_FROM = 'Dojo Merch <noreply@dojomerch.com>'
 
 # Application definition
 
@@ -74,7 +75,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                
+                'swag_app.context_processors.cart'
             ],
         },
     },
@@ -130,9 +131,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
+# STATIC_URL = '/static/'
+# MEDIA_URL = '/uploads/'
+# MEDIA_ROOT = os.path.join(BASE_DIR,'uploads/')
+# STATICFILES_DIR = [
+#     os.path.join(BASE_DIR, 'static')
+# ]
+
 STATIC_URL = '/static/'
-MEDIA_URL = '/uploads/'
-MEDIA_ROOT = os.path.join(BASE_DIR,'uploads/')
-STATICFILES_DIR = [
-    os.path.join(BASE_DIR, 'static')
-]
+STATICFILES_DIRS = (os.path.join(BASE_DIR, 'static'), ) 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+MEDIA_URL = '/media/' 
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+

@@ -9,77 +9,40 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <!-- End Bootstrap -->
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css\style.css' %}">
+
     <title>Dojo Swag Merch</title>
+
 </head>
-<body>
+<body style="overflow-x: hidden">
     <div class="header">
         <div class="row">
-            <h1 class="display-4">Dojo Swag Merch</h1>
-            <!-- Need to insert cart image here and make it a link to the render cart method -->
-            <a href="#">Cart Image</a> 
+            <div class="col">
+                <h1 class="display-4 my-5 mx-5">Dojo Swag Merch</h1>
+            </div>
+            <div class="col">
+                <!-- Nice-to-have feature for later: add conditional statement to show full cart icon or empty cart icon depending on what user has selected -->
+                <div class="p-2 bd-highlight d-flex justify-content-end">
+                <a href="{% url 'cart' %} "><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/></svg></a>
+                </div> 
+            </div>
         </div>
     </div>
         <div class="row">
-            <!-- This should be two rows of 3 images like the wireframe, but with space for the title, desc and price if we want all of that. Need to add the correct images and link to the individual product pages. -->
-            <!-- This should prob actually be a loop to display whatever is in the product class...need to figure out how to display in continuing rows of 3 from the loop -->
-            <div class="card-deck">
-                <div class="card">
-                    <img class="card-img-top" src="..." alt="First item image">
-                    <div class="card-body">
-                        <h5 class="card-title">1st Card title</h5>
-                        <p class="card-text">First item description</p>
-                        <!-- Not sure if we want this text muted? bolded? larger? -->
-                        <p class="card-text text-muted">First item price</p>
+                
+                <div class="columns is-multiline mb-6">
+                    <div class="column is-12 has-text-centered mt-6 mb-6">
+                        <h2 class="is-size-3">Buy Our Merch</h2>
                     </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="..." alt="2nd item image">
-                    <div class="card-body">
-                        <h5 class="card-title">2nd Card title</h5>
-                        <p class="card-text">2nd item description</p>
-                        <p class="card-text text-muted">2nd item price</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="..." alt="3rd item image">
-                    <div class="card-body">
-                        <h5 class="card-title">3rd Card title</h5>
-                        <p class="card-text">3rd item description</p>
-                        <p class="card-text text-muted">3rd item price</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="card-deck">
-                <div class="card">
-                    <img class="card-img-top" src="..." alt="4th item image">
-                    <div class="card-body">
-                        <h5 class="card-title">4th Card title</h5>
-                        <p class="card-text">4th item description</p>
-                        <p class="card-text text-muted">4th item price</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="..." alt="5th item image">
-                    <div class="card-body">
-                        <h5 class="card-title">5th Card title</h5>
-                        <p class="card-text">5th item description</p>
-                        <p class="card-text text-muted">5th item price</p>
-                    </div>
-                </div>
-                <div class="card">
-                    <img class="card-img-top" src="..." alt="6th item image">
-                    <div class="card-body">
-                        <h5 class="card-title">6th Card title</h5>
-                        <p class="card-text">6th item description</p>
-                        <p class="card-text text-muted">6th item price</p>
-                    </div>
+            
+                    {% for product in all_products %}
+                        {% include 'parts/list_item.html' %}
+                    {% endfor %}
                 </div>
             </div>
         </div>
     </div>
-
-
 </body>
 </html>

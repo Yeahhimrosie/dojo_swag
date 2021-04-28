@@ -12,13 +12,14 @@
     <title>Dojo Swag Checkout</title>
 </head>
 <body>
+    <a href="{% url 'main' %}">Main</a>
     <div class="header">
         <div class="row">
             <h1 class="display-4">Contact Information</h1>
         </div>
     </div>
     <div class="form_body">
-        <form action="#" method="POST">
+        <form action="/dojoswag/checkoutpage" method="POST">
             {% csrf_token %}
             <div class="col">
                 <div class="form-floating">
@@ -29,11 +30,11 @@
                 <div class="form-floating">
                     <!-- REMOVE EITHER 'PLACEHOLDER' OR 'LABEL FOR' ACCORDING TO HOW BOOTSTRAP ALLOWS -->
                     <input type="text" class="form-control" name="last_name" id="floatingLastName" placeholder="Last Name">
-                    <label for="floatingLastName">First Name: </label>
+                    <label for="floatingLastName">Last Name: </label>
                 </div>
                 <div class="form-floating">
                     <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email">
-                    <label for="floatingEmail">Last Name: </label>
+                    <label for="floatingEmail">Email </label>
                 </div>
                 <div class="form-floating">
                     <input type="tel" class="form-control" name="phone_num" id="floatingPhone" placeholder="Phone">
@@ -109,6 +110,13 @@
                     <input type="postal" class="form-control" name="postal" id="floatingPostal" placeholder="Zip code">
                     <label for="floatingPostal">Zip Code: </label>
                 </div>
+                <button type="submit">Submit</button>
+        </form>
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="notification is-success is-toast">{{ message }}</div>
+                    {% endfor %}
+                {% endif %}
                 <div class="row">
                     <h1 class="display-4">Payment Information</h1>
                 </div>
@@ -168,6 +176,5 @@
                 <!-- END PAYPAL INTEGRATION CODE -->
                 </div>
             </div>
-        </form>
 </body>
 </html>

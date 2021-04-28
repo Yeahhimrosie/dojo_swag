@@ -1,6 +1,6 @@
 # Marj: The purpose of this page is to give the cart the functionality that we were looking for
 from django.conf import settings
-from .models import Product
+from .models import *
 
 class Cart(object):
     def __init__(self, request):

@@ -73,3 +73,4 @@ class OrderItem(models.Model):
 
     def get_total_price(self):
         return self.price * self.quantity
+# this shows the class titel on the admin page
