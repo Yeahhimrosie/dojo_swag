@@ -11,32 +11,41 @@
         <title>Dojo Swag Product</title>
     </head>
     <body>
-        {% if product.image %}
-        <figure>
-            <div class="card" style="width: 45rem;">
-                <img src="{{ product.image.url }}"" class="card-img-top"">
-            </div>
-        </figure>
-    {% endif %}
-    <h1 class="title">{{ product.title }}, ${{ product.price }}</h1>
-    <p class="mb-6"><span class="tag is-dark">{{ product.name }}</span></p>
-    <p>{{ product.description }}</p>
-    <hr>
-    {% if messages %}
-        {% for message in messages %}
-            <div class="notification is-success is-toast">{{ message }}</div>
-        {% endfor %}
-    {% endif %}
-    <form method="post" action=".">
-        {% csrf_token %}
-        <div class="field has-addons">
-            <div class="control">
-                <input type="number" name="quantity" value="1" class="input" min="1">
-            </div>
-            <div class="control">
-                <button class="button is-dark is-uppercase">Buy Merch</button>
-            </div>
+        <a href="{% url 'main' %}">Main</a>
+        <div class="col">
+            <!-- Nice-to-have feature for later: add conditional statement to show full cart icon or empty cart icon depending on what user has selected -->
+            <div class="p-2 bd-highlight d-flex justify-content-end">
+            <a href="{% url 'cart' %} "><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+                <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/></svg></a>
+            </div> 
         </div>
-    </form>
+        {% if product.image %}
+            <figure>
+                <div class="card" style="width: 35rem;">
+                    <img src="{{ product.image.url }}"" class="card-img-top"">
+                </div>
+            </figure>
+        {% endif %}
+        <h1 class="title">{{ product.title }}, ${{ product.price }}</h1>
+        <p class="mb-6"><span class="tag is-dark">{{ product.title }}</span></p>
+        <p>{{ product.description }}</p>
+        <hr>
+        {% if messages %}
+            {% for message in messages %}
+                <div class="notification is-success is-toast">{{ message }}</div>
+            {% endfor %}
+        {% endif %}
+        <form method="post" action=".">
+            {% csrf_token %}
+            <div class="field has-addons">
+                <div class="control">
+                    <input type="number" name="quantity" value="1" class="input" min="1">
+                </div>
+                <div class="control">
+                    <button class="button is-dark is-uppercase">Buy Merch</button>
+                </div>
+            </div>
+        </form>
+        </div>
     </body>
 </html>

@@ -16,20 +16,24 @@ from django.template.loader import render_to_string
 #Marj will handle views
 
 def swag_home(request):
-    return render(request, 'main.html')
+    context = {
+        'all_products': Product.objects.all(), 
+    }
+    return render(request, 'main.html', context)
 
-def product_page(request, product_slug):
+def product_page(request, product_slug,):
+    cart = Cart(request)
     product = get_object_or_404(Product, slug=product_slug)
     if request.method == 'POST':
         form = AddToCartForm(request.POST)
         if form.is_valid():
             quantity = form.cleaned_data['quantity']
-            Cart.add(product_id=product.id, quantity=quantity, update_quantity=False)
+            cart.add(product_id=product.id, quantity=quantity, update_quantity=False)
             messages.success(request, 'The product was added to the cart')
             return redirect('product', product_slug=product_slug)
     else:
         form = AddToCartForm()
-    return render(request, 'product.html', {'form': form, 'product': product})
+    return render(request, 'product.html', { 'form': form, 'product': product })
 
 def cart_page(request):
     cart = Cart(request)
@@ -43,9 +47,6 @@ def cart_page(request):
         cart.add(change_quantity, quantity, True)
         return redirect('dojoswag/cartpage')
     return render(request, 'cart.html')
-
-def cart(request):
-    return {'cart': Cart(request)}
 
 def checkout_page(request):
     cart = Cart(request)
@@ -62,7 +63,8 @@ def checkout_page(request):
                 order = checkout(request, first_name, last_name, email, address, zipcode, state, phone, cart.get_total_cost())
                 cart.clear()
                 notify_customer(order)
-                return redirect('success')
+                messages.success(request, 'Thanks for ordering!')
+                return redirect('dojoswag/checkoutpage')
     else:
         form = CheckoutForm()
     return render(request, 'checkout.html', {'form': form })
