@@ -20,7 +20,7 @@
         </figure>
     {% endif %}
     <h1 class="title">{{ product.title }}, ${{ product.price }}</h1>
-    <p class="mb-6"><span class="tag is-dark">{{ product.vendor.name }}</span></p>
+    <p class="mb-6"><span class="tag is-dark">{{ product.name }}</span></p>
     <p>{{ product.description }}</p>
     <hr>
     {% if messages %}

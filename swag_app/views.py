@@ -1,21 +1,22 @@
 from django.shortcuts import render,  get_object_or_404, redirect
 from .forms import *
-from django.db.models import Q
 from .models import *
-from .cart import Cart
+from .cart import Cart #we are importing the methods in cart.py 
 from django.conf import settings
 from django.contrib import messages
+
 # these are built in Django email notifications to the customers for the orders
+
 from django.core.mail import EmailMultiAlternatives
 from django.template.loader import render_to_string
 
 # Create your views here.
 
+
 #Marj will handle views
 
 def swag_home(request):
-    newest_products = Product.objects.all()[0:8]
-    return render(request, 'main.html', {'newest_products': newest_products})
+    return render(request, 'main.html')
 
 def product_page(request, product_slug):
     product = get_object_or_404(Product, slug=product_slug)
@@ -32,6 +33,22 @@ def product_page(request, product_slug):
 
 def cart_page(request):
     cart = Cart(request)
+    remove_from_cart = request.GET.get('remove_from_cart', '')
+    change_quantity = request.GET.get('change_quantity', '')
+    quantity = request.GET.get('quantity', 0)
+    if remove_from_cart:
+        cart.remove(remove_from_cart)
+        return redirect('dojoswag/cartpage')
+    if change_quantity:
+        cart.add(change_quantity, quantity, True)
+        return redirect('dojoswag/cartpage')
+    return render(request, 'cart.html')
+
+def cart(request):
+    return {'cart': Cart(request)}
+
+def checkout_page(request):
+    cart = Cart(request)
     if request.method == 'POST':
         form = CheckoutForm(request.POST)
         if form.is_valid():
@@ -41,32 +58,35 @@ def cart_page(request):
                 phone = form.cleaned_data['phone']
                 address = form.cleaned_data['address']
                 zipcode = form.cleaned_data['zipcode']
-                place = form.cleaned_data['place']
-                order = checkout(request, first_name, last_name, email, address, zipcode, place, phone, cart.get_total_cost())
+                state = form.cleaned_data['state']
+                order = checkout(request, first_name, last_name, email, address, zipcode, state, phone, cart.get_total_cost())
                 cart.clear()
                 notify_customer(order)
                 return redirect('success')
     else:
         form = CheckoutForm()
-    remove_from_cart = request.GET.get('remove_from_cart', '')
-    change_quantity = request.GET.get('change_quantity', '')
-    quantity = request.GET.get('quantity', 0)
-    if remove_from_cart:
-        cart.remove(remove_from_cart)
-        return redirect('cart')
-    if change_quantity:
-        cart.add(change_quantity, quantity, True)
-        return redirect('cart')
-    return render(request, 'cart.html', {'form': form })
+    return render(request, 'checkout.html', {'form': form })
 
 def success(request):
     return render(request, 'success.html')
 
-def checkout(request, first_name, last_name, email, address, zipcode, place, phone, amount):
-    order = Order.objects.create(first_name=first_name, last_name=last_name, email=email, address=address, zipcode=zipcode, place=place, phone=phone, paid_amount=amount)
+def checkout(request, first_name, last_name, email, address, zipcode, state, phone, amount):
+    order = Order.objects.create(
+        first_name=first_name, 
+        last_name=last_name, 
+        email=email, 
+        address=address, 
+        zipcode=zipcode, state=state, 
+        phone=phone, 
+        paid_amount=amount)
     for item in Cart(request):
-        OrderItem.objects.create(order=order, product=item['product'], vendor=item['product'].vendor, price=item['product'].price, quantity=item['quantity'])
-        order.vendors.add(item['product'].vendor)
+        OrderItem.objects.create(
+            order=order, 
+            product=item['product'], 
+            price=item['product'].price, 
+            quantity=item['quantity']
+            )
+        order.add(item['product'])
     return order
 
 def notify_customer(order):

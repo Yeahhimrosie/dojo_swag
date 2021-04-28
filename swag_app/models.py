@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import user
+from django.contrib.auth.models import User
 # these will help with the image  uploads
 from io import BytesIO
 from PIL import Image
@@ -20,7 +20,7 @@ class Product(models.Model):
 
 # Marj added these methods
     class Meta:
-        ordering = ['-date_added']
+        ordering = ['-created_at']
 
     def __str__(self):
         return self.title
