@@ -18,7 +18,19 @@
             <a href="#">Cart Image</a> 
         </div>
     </div>
+    <!-- This loop will help get all the products show with no issues -->
     <div class="container">
+        <div class="columns is-multiline mb-6">
+            <div class="column is-12 has-text-centered mt-6 mb-6">
+                <h2 class="is-size-3">Buy Artwork(s) From Artists Across The Globe</h2>
+            </div>
+    
+            {% for product in newest_products %}
+                {% include 'product/parts/list_item.html' %}
+            {% endfor %}
+        </div>
+    <!-- end of loop-->
+    
         <div class="row">
             <!-- This should be two rows of 3 images like the wireframe, but with space for the title, desc and price if we want all of that. Need to add the correct images and link to the individual product pages. -->
             <!-- This should prob actually be a loop to display whatever is in the product class...need to figure out how to display in continuing rows of 3 from the loop -->
