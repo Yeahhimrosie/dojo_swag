@@ -57,7 +57,7 @@ def cart_page(request):
     if change_quantity:
         cart.add(change_quantity, quantity, True)
         return redirect('cart')
-    return render(request, 'cart.html', {'form': form, 'stripe_pub_key': settings.STRIPE_PUB_KEY})
+    return render(request, 'cart.html', {'form': form })
 
 def success(request):
     return render(request, 'success.html')
