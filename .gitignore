@@ -62,8 +62,8 @@ pytestdebug.log
 # Django stuff:
 *.log
 local_settings.py
-db.sqlite3
-db.sqlite3-journal
+# db.sqlite3
+# db.sqlite3-journal
 
 # Flask stuff:
 instance/
@@ -145,7 +145,7 @@ dmypy.json
 # file properties cache/storage on macOS
 *.DS_Store
 # thumbnail cache on Windows
-Thumbs.db
+# Thumbs.db
 
 # profiling data
 .prof
