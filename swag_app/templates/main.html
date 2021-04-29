@@ -1,64 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Start Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
-    <!-- End Bootstrap -->
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'css\style.css' %}">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Start Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+        <!-- End Bootstrap -->
+        {% load static %}
+        <link rel="stylesheet" href="{% static 'css\style.css' %}">
 
-    <title>Dojo Swag Merch</title>
+        <title>Dojo Swag Merch</title>
 
-</head>
-<body style="overflow-x: hidden">
-    <div class="header">
-        <div class="row">
-            <div class="col">
-                <h1 class="display-4 my-5 mx-5">Dojo Swag Merch</h1>
-            </div>
-            <div class="col">
-                <!-- Nice-to-have feature for later: add conditional statement to show full cart icon or empty cart icon depending on what user has selected -->
-                <div class="p-2 bd-highlight d-flex justify-content-end">
-
-                <a href="{% url 'cart' %} "><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
-
-                <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
-
-                    <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/></svg></a>
-                </div> 
+    </head>
+    <body>
+        <div class="header">
+            <div class="row">
+                <div class="col">
+                    <h1 class="display-4">Dojo Swag Merch</h1>
+                </div>
+                <div class="col">
+                    <!-- Nice-to-have feature for later: add conditional statement to show full cart icon or empty cart icon depending on what user has selected -->
+                    <div class="p-2 bd-highlight d-flex justify-content-end">
+                    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/></svg></a>
+                    </div> 
+                </div>
             </div>
         </div>
-    </div>
-        <div class="row">
-
-                
-                <div class="columns is-multiline mb-6">
-                    <div class="column is-12 has-text-centered mt-6 mb-6">
-                        <h2 class="is-size-3">Buy Our Merch</h2>
-
-                {% for each_product in all_products %}
-                <div class="col">
-                    <div class="card-group mx-3 d-inline-flex mb-5">
-                        <img class="card-img-top mx-auto mt-3" style="width: 15rem;" src="{{ each_product.thumbnail.url }}" alt="6th item image">
-                        <div class="card-body text-center">
-                            <h5 class="card-title"><a href="/dojoswag/productpage/{{one_product.id}}" style="text-decoration: none;">{{each_product.title}}</a></h5>
-                            <p class="card-text text-muted">${{each_product.price|floatformat:2}}</p>
+        <div class="container">
+                <!-- Need to add the correct images and link to the individual product pages. Having trouble getting images to load -->
+                <!-- This should prob actually be a loop to display whatever is in the product class...need to figure out how to display in continuing rows of 3 from the loop -->
+                <div class="card-deck">
+                    {% for each_product in all_products %}
+                    <div class="card d-flex">
+                        <div class="row">
+                            <img class="card-img-top" style="width: 15rem;"
+                            src="{{each_product.image.url}}" alt="First item image">
                         </div>
-
+                        <div class="row">
+                            <div class="card-body">
+                                <h5 class="card-title">{{each_product.title}}</h5>
+                                <!-- Not sure if we want this text muted? bolded? larger? -->
+                                <p class="card-text text-muted">${{each_product.price}}</p>
+                            </div>
+                        </div>
                     </div>
-            
-                    {% for product in all_products %}
-                        {% include 'list_item.html' %}
                     {% endfor %}
                 </div>
-                {% endfor %}
-            </div>
         </div>
-    </div>
-</body>
+    </body>
 </html>
