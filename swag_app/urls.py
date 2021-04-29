@@ -8,15 +8,16 @@ from . import views
 #Roy will handle urls
 
 urlpatterns = [
-    path('', views.swag_home),
-    path('dojoswag/productpage/<int:product_id>', views.product_page),
-    # path('dojoswag/checkoutpage', views.checkout_page),
-    # path('dojoswag/cartpage', views.cart_page),
-    # path('dojoswag/addcart', views.add_to_cart),
+    path('', views.swag_home, name="main"),
+    path('dojoswag/checkoutpage', views.checkout_page, name="checkout"),
+    path('dojoswag/cartpage', views.cart_page, name="cart"),
+    path('<slug:product_slug>', views.product_page, name="product"),
     # path('dojoswag/deletecart', views.delete_from_cart),
-    # path('dojoswag/checkout', views.checkout),
+    # path('dojoswag/checkout', views.checkout, name="checkout"),
     # path('dojoswag/submitorder', views.submit_order),
+    path('success', views.success, name="success"),
 ]
+
 
 #####
 # if settings.DEBUG:
