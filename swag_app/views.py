@@ -1,4 +1,5 @@
 from django.shortcuts import render,  get_object_or_404, redirect
+from django.db.models import Q
 from .forms import *
 from .models import *
 from .cart import Cart #we are importing the methods in cart.py 
@@ -30,22 +31,25 @@ def product_page(request, product_slug,):
             quantity = form.cleaned_data['quantity']
             cart.add(product_id=product.id, quantity=quantity, update_quantity=False)
             messages.success(request, 'The product was added to the cart')
-            return redirect('product', product_slug=product_slug)
+            return redirect('products', product_slug=product_slug)
     else:
         form = AddToCartForm()
     return render(request, 'product.html', { 'form': form, 'product': product })
 
 def cart_page(request):
     cart = Cart(request)
-    remove_from_cart = request.GET.get('remove_from_cart', '')
-    change_quantity = request.GET.get('change_quantity', '')
-    quantity = request.GET.get('quantity', 0)
-    if remove_from_cart:
-        cart.remove(remove_from_cart)
-        return redirect('dojoswag/cartpage')
-    if change_quantity:
-        cart.add(change_quantity, quantity, True)
-        return redirect('dojoswag/cartpage')
+    if request.method == 'GET':
+        remove_from_cart = request.GET.get('remove_from_cart', '')
+        change_quantity = request.GET.get('change_quantity', '')
+        quantity = request.GET.get('quantity', 0)
+        if remove_from_cart:
+            cart.remove(remove_from_cart)
+            cart.save()
+            return redirect('cart')
+        if change_quantity:
+            cart.add(change_quantity, quantity, True)
+            cart.save()
+            return redirect('cart')
     return render(request, 'cart.html')
 
 def checkout_page(request):
