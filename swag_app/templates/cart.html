@@ -13,9 +13,11 @@
     </head>
     <body>
         <a href="{% url 'main' %}">Main</a>
-        <a href="">Go back</a>
+        <a href="javascript:history.back()">Go back</a>
         <h1 class="title">Cart</h1>
-        {% if cart %} 
+        {% if not cart %} 
+            <p>You don't have any products in your cart!</p>
+        {% else %}
             <div class="box mb-6">
                 <div class="table">
                     <table class="table is-fullwidth is-striped">
@@ -58,17 +60,9 @@
                     </table>
                 </div>
             </div>
-
-        {% else %}
-            <p>You don't have any products in your cart!</p>
         {% endif %}
         <a href="{% url 'checkout' %}">Check Out</a>
 
-            
-    {% else %}
-        <p>You don't have any products in your cart!</p>
-    {% endif %}
-      
 <!-- <html lang="en">
     <head>
         <meta charset="UTF-8">
@@ -88,7 +82,6 @@
                 <th>Price</th>
             </thead>
             <tbody>
-                {%  %}
                 <tr>
                     <td><img src="" height=150px, width="150px"></td>
                     <td>{{quantity}}</td>
@@ -100,7 +93,6 @@
                         </form>
                     </td>
                 </tr>
-                {% endfor %}
                 <tr>
                     <td colspan="5"><h2>Total: </h2></td>
                 </tr>
