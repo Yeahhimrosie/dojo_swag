@@ -1,0 +1,26 @@
+*{
+    padding: 0px;
+    margin: 0px;
+}
+
+.card_img > a > img, h5, p
+{
+    max-width: 200px;
+    animation: animate 3s linear infinite;
+}
+
+@keyframes animate
+{
+    25%,25%
+    {
+        transform: translateY(10px);
+    }
+    50%
+    {
+        transform: translateY(20px);
+    }
+}
+
+p, a > h5{
+    margin-left: 30px;
+}
