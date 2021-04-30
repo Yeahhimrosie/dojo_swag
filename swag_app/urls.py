@@ -11,7 +11,7 @@ urlpatterns = [
     path('', views.swag_home, name="main"),
     path('dojoswag/checkoutpage', views.checkout_page, name="checkout"),
     path('dojoswag/cartpage', views.cart_page, name="cart"),
-    path('<slug:product_slug>', views.product_page, name="product"),
+    path('<slug:product_slug>', views.product_page, name="products"),
     # path('dojoswag/deletecart', views.delete_from_cart),
     # path('dojoswag/checkout', views.checkout, name="checkout"),
     # path('dojoswag/submitorder', views.submit_order),
