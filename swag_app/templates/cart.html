@@ -10,15 +10,25 @@
         <!-- End Bootstrap -->
         <title>Dojo Swag Cart</title>
     </head>
-    <body>
-        <a href="{% url 'main' %}">Main</a>
-        <a href="javascript:history.back()">Go back</a>
-
-        <h1 class="title">Cart</h1>
+    <body style="overflow-x: hidden;">
+        <div class="row">
+            <div class="col">
+                <h1 class="ms-5 display-2" style="font-weight:600;">Cart</h1>
+            </div>
+            <div class="col">
+                <!-- Nice-to-have feature for later: add conditional statement to show full cart icon or empty cart icon depending on what user has selected -->
+                <div class="p-2 bd-highlight d-flex justify-content-end">
+                    <a style="text-decoration: none;" class="btn-dark rounded px-3 py-2 mx-5 my-2" href="javascript:history.back()">Go back</a>
+                    <a href="{% url 'cart' %} "><svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="currentColor" class="bi bi-cart-check-fill" viewBox="0 0 16 16">
+                        <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm-1.646-7.646-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L8 8.293l2.646-2.647a.5.5 0 0 1 .708.708z"/></svg></a>
+                </div> 
+            </div>
+        </div>
 
 
 <!-- To show the products on the cart -->
         {% if cart %}
+        <div class=" mx-3 container_cart">
             <div class="table mb-6">
                 <table class="table table-hover">
                     <thead>
@@ -59,10 +69,13 @@
                     </tfoot>
                 </table>
             </div>
-        </div>
+            </div>
         {% else %}
-            <p>You don't have any products in your cart!</p>
+            <p style="text-align: center; font-style: italic; font-size: 30px; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;">You don't have any products in your cart!</p>
         {% endif %}
-        <a href="{% url 'checkout' %}">Check Out</a>
+        </div>
+        <div class="text-center mb-5">
+            <a style="text-decoration: none;" class="btn-dark px-3 py-2 rounded" href="{% url 'checkout' %}">Check Out</a>
+        </div>
     </body>
 </html>
