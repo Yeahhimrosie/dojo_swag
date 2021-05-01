@@ -29,7 +29,7 @@ def product_page(request, product_slug,):
         form = AddToCartForm(request.POST)
         if form.is_valid():
             quantity = form.cleaned_data['quantity']
-            cart.add(product_id=product.id, quantity=quantity, update_quantity=False)
+            cart.add(product_id=product.id, quantity=quantity-1, update_quantity=True)
             messages.success(request, 'The product was added to the cart')
             return redirect('products', product_slug=product_slug)
     else:

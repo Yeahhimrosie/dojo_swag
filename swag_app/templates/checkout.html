@@ -12,133 +12,30 @@
     <title>Dojo Swag Checkout</title>
 </head>
 <body>
-    <a href="{% url 'main' %}">Main</a>
-    <a href="javascript:history.back()">Go back</a>
-    
-    <div class="header">
-        <div class="row">
-            <h1 class="display-4">Contact Information</h1>
+    <div class="row">
+        <div class="col">
+            <h1 class="ms-5 display-2" style="font-weight:600;">Checkout</h1>
+        </div>
+        <div class="col">
+            <!-- Nice-to-have feature for later: add conditional statement to show full cart icon or empty cart icon depending on what user has selected -->
+            <div class="p-2 bd-highlight d-flex justify-content-end">
+                <a style="text-decoration: none;" class="btn-dark rounded px-3 py-2 mx-5 my-2" href="javascript:history.back()">Go back</a>
+            </div>
         </div>
     </div>
-    <div class="form_body">
-        <form action="/dojoswag/checkoutpage" method="POST">
-            {% csrf_token %}
-            <div class="col">
-                <div class="form-floating">
-                    <!-- REMOVE EITHER 'PLACEHOLDER' OR 'LABEL FOR' ACCORDING TO HOW BOOTSTRAP ALLOWS -->
-                    <input type="text" class="form-control" name="first_name" id="floatingFirstName" placeholder="First Name">
-                    <label for="floatingFirstName">First Name: </label>
-                </div>
-                <div class="form-floating">
-                    <!-- REMOVE EITHER 'PLACEHOLDER' OR 'LABEL FOR' ACCORDING TO HOW BOOTSTRAP ALLOWS -->
-                    <input type="text" class="form-control" name="last_name" id="floatingLastName" placeholder="Last Name">
-                    <label for="floatingLastName">Last Name: </label>
-                </div>
-                <div class="form-floating">
-                    <input type="email" class="form-control" name="email" id="floatingEmail" placeholder="Email">
-                    <label for="floatingEmail">Email </label>
-                </div>
-                <div class="form-floating">
-                    <input type="tel" class="form-control" name="phone_num" id="floatingPhone" placeholder="Phone">
-                    <label for="floatingPhone">Phone: </label>
-                </div>
-            </div>
-            <div class="col">
-                <div class="form-floating">
-                    <input type="text" class="form-control" name="address" id="floatingAddress" placeholder="Address">
-                    <label for="floatingAddress">Address: </label>
-                </div>
-                <div class="form-floating">
-                    <input type="text" class="form-control" name="city" id="floatingCity" placeholder="City">
-                    <label for="floatingCity">City: </label>
-                </div>
-                <div class="form-floating">
-                    <label for="states">State</label>
-                    <select class="form-control" name="state" id="states">
-                        <option value=""></option>
-                        <option value="AL">AL</option>
-                        <option value="AK">AK</option>
-                        <option value="AZ">AZ</option>
-                        <option value="AR">AR</option>
-                        <option value="CA">CA</option>
-                        <option value="CO">CO</option>
-                        <option value="CT">CT</option>
-                        <option value="DE">DE</option>
-                        <option value="FL">FL</option>
-                        <option value="GA">GA</option>
-                        <option value="HI">HI</option>
-                        <option value="ID">ID</option>
-                        <option value="IL">IL</option>
-                        <option value="IN">IN</option>
-                        <option value="IA">IA</option>
-                        <option value="KS">KS</option>
-                        <option value="KY">KY</option>
-                        <option value="LA">LA</option>
-                        <option value="ME">ME</option>
-                        <option value="ND">MD</option>
-                        <option value="MA">MA</option>
-                        <option value="MI">MI</option>
-                        <option value="MN">MN</option>
-                        <option value="MS">MS</option>
-                        <option value="MO">MO</option>
-                        <option value="MT">MT</option>
-                        <option value="NE">NE</option>
-                        <option value="NV">NV</option>
-                        <option value="NH">NH</option>
-                        <option value="NJ">NJ</option>
-                        <option value="NM">NM</option>
-                        <option value="NY">NY</option>
-                        <option value="NC">NC</option>
-                        <option value="ND">ND</option>
-                        <option value="OH">OH</option>
-                        <option value="OK">OK</option>
-                        <option value="OR">OR</option>
-                        <option value="PA">PA</option>
-                        <option value="RI">RI</option>
-                        <option value="SC">SC</option>
-                        <option value="SD">SD</option>
-                        <option value="TN">TN</option>
-                        <option value="TX">TX</option>
-                        <option value="UT">UT</option>
-                        <option value="VT">VT</option>
-                        <option value="VA">VA</option>
-                        <option value="WA">WA</option>
-                        <option value="WV">WV</option>
-                        <option value="WI">WI</option>
-                        <option value="WY">WY</option>
-                    </select>
-                </div>
-                <div class="form-floating">
-                    <input type="postal" class="form-control" name="postal" id="floatingPostal" placeholder="Zip code">
-                    <label for="floatingPostal">Zip Code: </label>
-                </div>
-                <button type="submit">Submit</button>
-        </form>
-                {% if messages %}
+    <div class="header">
+        <div style="margin-top: 240px;";" class="row">
+            <h2 class="display-4 text-center mx-3 my-4">Safely checkout with PayPal</h2>
+        </div>
+    </div>
+                <!-- {% if messages %}
                     {% for message in messages %}
                         <div class="notification is-success is-toast">{{ message }}</div>
                     {% endfor %}
-                {% endif %}
+                {% endif %} -->
+                
+                <!-- APR CODE FOR PAYPAL INTEGRATION DO NOT DELETE! COMMENT OUT IF NECESSARY -->
                 <div class="row">
-                    <h1 class="display-4">Payment Information</h1>
-                </div>
-                <div class="row">
-                <!-- HARD CODED FOR CREDIT CARD INFO -->
-                        <!-- <div class="form-floating">
-                            <input type="number" class="form-control" name="creditCard" id="floatingCard" placeholder="Credit Card Number">
-                            <label for="floatingCard">Credit Card Number: </label>
-                        </div>
-                        <div class="form-floating">
-                            <input type="date" maxlength="4" class="form-contrl" name="expDate" id="floatingExpDate" placeholder="MM/YY">
-                            <label for="floatingExpDate">MM/YY</label> 
-                        </div>
-                        <div class="form-floating">
-                            <input type="number" maxlength="3" class="form-control" name="CVV" id="floatingCVV" placeholder="CVV">
-                            <label for="floatingCVV">CVV</label>
-                        </div> -->
-                <!-- END HARD CODE FOR CREDIT CARD INFO -->
-
-            <!-- APR CODE FOR PAYPAL INTEGRATION DO NOT DELETE! COMMENT OUT IF NECESSARY -->
                     <div id="smart-button-container">
                         <div style="text-align: center;">
                         <div id="paypal-button-container"></div>
